@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import NavBar from "../components/NavBar";
-import SideBar from "../components/Sidebar";
+import SideBar from "../components/SideBar";
 import Login from "../components/forms/Login";
 import Register from "../components/forms/Register";
 import AddFirm from "../components/forms/AddFirm";
