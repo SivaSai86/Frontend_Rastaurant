@@ -3,7 +3,7 @@ import { API_Path } from "../../data/apiPath";
 import "../styles/addFirm.css";
 import { jwtDecode } from "jwt-decode"; // default import
 
-const AddFirm = () => {
+const AddFirm = ({ setFirmId }) => {
   const [firmName, setFirmName] = useState("");
   const [area, setArea] = useState("");
   const [category, setCategory] = useState([]);
@@ -27,47 +27,39 @@ const AddFirm = () => {
       const decoded = jwtDecode(vendorToken);
       const vendorId = decoded.userId;
 
-      // const formData = new FormData();
-      // formData.append("firmName", firmName);
-      // formData.append("area", area);
-      // formData.append("category", category.join(",")); // "veg,non-veg"
-      // formData.append("region", region.join(",")); // "south-indian,north-indian"
-      // formData.append("offer", offer);
-      // formData.append("vendor_id", vendorId);
-      // formData.append("image", image); // <input type="file"> file object
-
-      // const formDataObj = {};
-      // for (let pair of formData.entries()) {
-      //   formDataObj[pair[0]] = pair[1];
-      // }
-
-      // console.log(formDataObj);
-
       const formData = new FormData();
       formData.append("firmName", firmName);
       formData.append("area", area);
-      formData.append("category", category.join(","));
-      formData.append("region", region.join(","));
+      formData.append("category", category.join(",")); // "veg,non-veg"
+      formData.append("region", region.join(",")); // "south-indian,north-indian"
       formData.append("offer", offer);
       formData.append("vendor_id", vendorId);
-      formData.append("image", image); // File object
+      formData.append("image", image); // <input type="file"> file object
 
-      const response = await fetch(
-        `https://backend-restaurant-1-ujsx.onrender.com/firm/add-firm`,
-        {
-          method: "POST",
-          headers: {
-            token: vendorToken,
-          },
-          body: formData,
-        }
-      );
+      const response = await fetch(`${API_Path}firm/add-firm`, {
+        method: "POST",
+        headers: {
+          token: vendorToken,
+        },
+        body: formData,
+      });
 
       const responseData = await response.json(); // now JSON parse will work
 
       if (response.ok) {
         alert("Firm Added Successfully!");
         console.log("data: ", responseData);
+        // Store the firm ID from response or fetch it
+        if (responseData.firmId) {
+          setFirmId(responseData.firmId);
+        }
+        // Clear form
+        setFirmName("");
+        setArea("");
+        setCategory([]);
+        setOffer("");
+        setRegion([]);
+        setFirmImage(null);
       } else {
         alert("Firm Add Failed: " + JSON.stringify(responseData));
         console.error("Server Error:", responseData);

@@ -14,6 +14,7 @@ const LandingPage = () => {
   const [showAddFirm, setShowAddFirm] = useState(false);
   const [showAddProduct, setShowAddProduct] = useState(false);
   const [showWelcome, setShowWelcome] = useState(false);
+  const [firmId, setFirmId] = useState(null);
 
   const showRegisterHandler = () => {
     setShowRegister(true);
@@ -71,8 +72,8 @@ const LandingPage = () => {
           />
           {showRegister && <Register showLoginHandler={showLoginHandler} />}
           {showLogin && <Login showWelcomeHandler={showWelcomeHandler} />}
-          {showAddFirm && <AddFirm />}
-          {showAddProduct && <AddProduct />}
+          {showAddFirm && <AddFirm setFirmId={setFirmId} />}
+          {showAddProduct && <AddProduct firmId={firmId} />}
           {showWelcome && <Welcome />}
         </div>
       </section>
