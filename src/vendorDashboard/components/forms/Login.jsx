@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { API_Path } from "../../data/apiPath";
 import "../styles/login.css";
-const Login = () => {
+const Login = (props) => {
+  const { showWelcomeHandler } = props;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -23,6 +24,7 @@ const Login = () => {
         localStorage.setItem("vendorToken", data.token);
         setEmail("");
         setPassword("");
+        showWelcomeHandler();
       }
     } catch (error) {
       console.error("login failed: ", error);
