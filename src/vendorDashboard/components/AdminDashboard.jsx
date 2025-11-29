@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { API_Path } from "../../data/apiPath";
+import { API_Path } from "../data/apiPath";
 import "../styles/adminDashboard.css";
 
 const AdminDashboard = () => {
