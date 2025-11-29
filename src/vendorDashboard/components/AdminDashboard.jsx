@@ -87,7 +87,9 @@ const AdminDashboard = () => {
                           📍 {vendor.area} | {vendor.region}
                         </p>
                         <p className="firmOffer">Offer: {vendor.offer}</p>
-                        <p className="firmCategory">Category: {vendor.category}</p>
+                        <p className="firmCategory">
+                          Category: {vendor.category}
+                        </p>
                       </div>
                       {vendor.image && (
                         <img
