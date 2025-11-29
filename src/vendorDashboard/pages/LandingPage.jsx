@@ -36,6 +36,15 @@ const LandingPage = () => {
     setShowAddProduct(false);
   };
 
+  const handleLoginSuccess = () => {
+    setShowLogin(false);
+    setShowRegister(false);
+    setShowAddFirm(false);
+    setShowAddProduct(false);
+    setShowUserDetail(true);
+    setShowAllProducts(true);
+  };
+
   const showAddFirmHandler = () => {
     setShowRegister(false);
     setShowLogin(false);
@@ -96,7 +105,7 @@ const LandingPage = () => {
             showUserDetailHandler={showUserDetailHandler}
           />
           {showRegister && <Register showLoginHandler={showLoginHandler} />}
-          {showLogin && <Login showWelcomeHandler={showWelcomeHandler} />}
+          {showLogin && <Login showWelcomeHandler={handleLoginSuccess} />}
           {showAddFirm && <AddFirm setFirmId={setFirmId} />}
           {showAddProduct && <AddProduct firmId={firmId} />}
           {showAllProducts && <AllProducts firmId={firmId} />}
