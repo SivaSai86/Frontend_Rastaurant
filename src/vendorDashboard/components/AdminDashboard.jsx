@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { API_Path } from "../data/apiPath";
-import "../styles/adminDashboard.css";
+import "../components/styles/adminDashboard.css";
 
 const AdminDashboard = () => {
   const [vendors, setVendors] = useState([]);

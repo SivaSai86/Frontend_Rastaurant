@@ -4,7 +4,7 @@ import { jwtDecode } from "jwt-decode";
 import "./styles/userDetail.css";
 
 const UserDetail = () => {
-  const [userDetails, useState] = useState(null);
+  const [userDetails, setUserDetails] = useState(null);
   const [firmDetails, setFirmDetails] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
