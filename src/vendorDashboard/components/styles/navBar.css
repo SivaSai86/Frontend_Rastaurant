@@ -7,8 +7,115 @@
   height: 80px;
   background-color: blue;
   font-size: large;
+  gap: 20px;
+}
+
+.company {
+  font-weight: bold;
+  font-size: 20px;
+  flex: 0.3;
+}
+
+.navMenu {
+  flex: 1;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.navMenu span {
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  font-size: 14px;
+}
+
+.navMenu span:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.userAuth {
+  flex: 0.3;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
 }
 
 .userAuth span {
   cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  font-size: 14px;
+}
+
+.userAuth span:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navSection {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 10px;
+  }
+
+  .company {
+    flex: 1;
+    min-width: 100%;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .navMenu {
+    flex: 1;
+    min-width: 100%;
+    gap: 8px;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .navMenu span {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .userAuth {
+    flex: 1;
+    min-width: 100%;
+    justify-content: flex-start;
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  .userAuth span {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navSection {
+    padding: 8px;
+  }
+
+  .company {
+    font-size: 16px;
+  }
+
+  .navMenu {
+    gap: 5px;
+  }
+
+  .navMenu span {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+
+  .userAuth span {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
 }

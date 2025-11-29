@@ -5,17 +5,30 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
+  padding: 20px;
 }
 
 .authForm h3 {
   margin: 0;
   text-align: center;
   color: #1f2937;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.authForm {
+  width: 100%;
+  max-width: 400px;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.08);
 }
 
 .authForm div {
   margin-bottom: 15px;
-  width: 70%;
+  width: 100%;
 }
 
 .authForm label {
@@ -27,29 +40,136 @@
 
 .authForm input {
   width: 100%;
-  padding: 15px;
+  padding: 10px 12px;
   border: 1px solid #d1d5db;
-  border-radius: 5px;
+  border-radius: 8px;
   outline: none;
   font-size: 14px;
   box-sizing: border-box;
+  transition: 0.2s ease;
 }
 
 .authForm input:focus {
   border-color: #2563eb;
+  background: #f0f7ff;
+}
+
+.btnsubmit {
+  margin-top: 10px;
 }
 
 .btnsubmit button {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   border: none;
   background: #2563eb;
   color: white;
   font-size: 15px;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
+  transition: 0.2s ease;
+  font-weight: 500;
 }
 
-.btnsubmit button:hover {
-  background: #1e3fae;
+.btnsubmit button:hover:not(:disabled) {
+  background: #1e40af;
+}
+
+.btnsubmit button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.errorMessage {
+  padding: 12px;
+  margin-bottom: 16px;
+  background: #fee2e2;
+  color: #991b1b;
+  border-radius: 8px;
+  border: 1px solid #fecaca;
+  font-size: 14px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.successMessage {
+  padding: 12px;
+  margin-bottom: 16px;
+  background: #d1fae5;
+  color: #065f46;
+  border-radius: 8px;
+  border: 1px solid #a7f3d0;
+  font-size: 14px;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Tablet Responsive (768px and below) */
+@media (max-width: 768px) {
+  .registerSection {
+    padding: 15px;
+  }
+
+  .authForm {
+    max-width: 100%;
+    padding: 25px;
+  }
+
+  .authForm h3 {
+    font-size: 20px;
+    margin-bottom: 18px;
+  }
+
+  .authForm input {
+    padding: 9px 10px;
+    font-size: 13px;
+  }
+
+  .btnsubmit button {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+/* Mobile Responsive (480px and below) */
+@media (max-width: 480px) {
+  .registerSection {
+    padding: 12px;
+  }
+
+  .authForm {
+    padding: 20px;
+  }
+
+  .authForm h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .authForm div {
+    margin-bottom: 12px;
+  }
+
+  .authForm label {
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+
+  .authForm input {
+    padding: 8px 9px;
+    font-size: 12px;
+  }
+
+  .btnsubmit button {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .errorMessage,
+  .successMessage {
+    font-size: 12px;
+    padding: 10px;
+    margin-bottom: 12px;
+  }
 }

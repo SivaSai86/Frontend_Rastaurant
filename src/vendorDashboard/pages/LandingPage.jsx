@@ -5,6 +5,8 @@ import Login from "../components/forms/Login";
 import Register from "../components/forms/Register";
 import AddFirm from "../components/forms/AddFirm";
 import AddProduct from "../components/forms/AddProduct";
+import AllProducts from "../components/AllProducts";
+import UserDetail from "../components/UserDetail";
 import Welcome from "../components/Welcome";
 import "../components/styles/landingPage.css";
 
@@ -13,6 +15,8 @@ const LandingPage = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [showAddFirm, setShowAddFirm] = useState(false);
   const [showAddProduct, setShowAddProduct] = useState(false);
+  const [showAllProducts, setShowAllProducts] = useState(false);
+  const [showUserDetail, setShowUserDetail] = useState(false);
   const [showWelcome, setShowWelcome] = useState(false);
   const [firmId, setFirmId] = useState(null);
 
@@ -45,7 +49,28 @@ const LandingPage = () => {
     setShowLogin(false);
     setShowAddFirm(false);
     setShowWelcome(false);
+    setShowAllProducts(false);
     setShowAddProduct(true);
+  };
+
+  const showAllProductsHandler = () => {
+    setShowRegister(false);
+    setShowLogin(false);
+    setShowAddFirm(false);
+    setShowAddProduct(false);
+    setShowUserDetail(false);
+    setShowWelcome(false);
+    setShowAllProducts(true);
+  };
+
+  const showUserDetailHandler = () => {
+    setShowRegister(false);
+    setShowLogin(false);
+    setShowAddFirm(false);
+    setShowAddProduct(false);
+    setShowAllProducts(false);
+    setShowWelcome(false);
+    setShowUserDetail(true);
   };
 
   const showWelcomeHandler = () => {
@@ -62,18 +87,20 @@ const LandingPage = () => {
         <NavBar
           showLoginHandler={showLoginHandler}
           showRegisterHandler={showRegisterHandler}
-          showAddFirmHandler={showAddFirmHandler}
-          showAddProductHandler={showAddProductHandler}
         />
         <div className="collectionSection">
           <SideBar
             showAddFirmHandler={showAddFirmHandler}
             showAddProductHandler={showAddProductHandler}
+            showAllProductsHandler={showAllProductsHandler}
+            showUserDetailHandler={showUserDetailHandler}
           />
           {showRegister && <Register showLoginHandler={showLoginHandler} />}
           {showLogin && <Login showWelcomeHandler={showWelcomeHandler} />}
           {showAddFirm && <AddFirm setFirmId={setFirmId} />}
           {showAddProduct && <AddProduct firmId={firmId} />}
+          {showAllProducts && <AllProducts firmId={firmId} />}
+          {showUserDetail && <UserDetail />}
           {showWelcome && <Welcome />}
         </div>
       </section>

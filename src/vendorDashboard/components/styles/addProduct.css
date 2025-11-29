@@ -101,3 +101,136 @@
   height: 16px;
   cursor: pointer;
 }
+
+/* Submit Button Styles */
+.btnsubmit button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.successMessage {
+  padding: 12px;
+  margin-bottom: 16px;
+  background: #d1fae5;
+  color: #065f46;
+  border-radius: 8px;
+  border: 1px solid #a7f3d0;
+  font-size: 14px;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Tablet Responsive (768px and below) */
+@media (max-width: 768px) {
+  .productSection {
+    padding: 30px 15px;
+  }
+
+  .tableForm {
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  .tableForm h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .field {
+    margin-bottom: 12px;
+  }
+
+  .tableForm label {
+    font-size: 13px;
+  }
+
+  .tableForm input[type="text"],
+  .tableForm input[type="file"],
+  .tableForm input[type="number"] {
+    padding: 9px;
+    font-size: 13px;
+  }
+
+  .btnsubmit button {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .inputsContainer {
+    gap: 12px;
+  }
+
+  .checkboxContainer {
+    font-size: 13px;
+  }
+
+  .radioContainer {
+    gap: 15px;
+  }
+
+  .radioItem {
+    font-size: 13px;
+  }
+}
+
+/* Mobile Responsive (480px and below) */
+@media (max-width: 480px) {
+  .productSection {
+    padding: 20px 12px;
+  }
+
+  .tableForm {
+    padding: 15px;
+  }
+
+  .tableForm h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .field {
+    margin-bottom: 10px;
+  }
+
+  .tableForm label {
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+
+  .tableForm input[type="text"],
+  .tableForm input[type="file"],
+  .tableForm input[type="number"] {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .btnsubmit button {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .inputsContainer {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .checkboxContainer {
+    font-size: 12px;
+  }
+
+  .radioContainer {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .radioItem {
+    font-size: 12px;
+  }
+
+  .successMessage {
+    font-size: 12px;
+    padding: 10px;
+    margin-bottom: 12px;
+  }
+}

@@ -1,0 +1,248 @@
+.allProductsContainer {
+  padding: 20px;
+  background: #f9f9f9;
+  min-height: calc(100vh - 200px);
+}
+
+.productsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #ddd;
+}
+
+.productsHeader h2 {
+  margin: 0;
+  color: #333;
+  font-size: 24px;
+}
+
+.refreshBtn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.refreshBtn:hover {
+  background-color: #0056b3;
+}
+
+.loadingMessage,
+.errorMessage,
+.noProductsMessage {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 16px;
+  color: #666;
+}
+
+.errorMessage {
+  color: #d32f2f;
+  background-color: #ffebee;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.noProductsMessage {
+  background-color: #e3f2fd;
+  color: #1976d2;
+  padding: 30px;
+  border-radius: 5px;
+}
+
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.productCard {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.productCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.productImageContainer {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background: #f0f0f0;
+  overflow: hidden;
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.noImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: #e0e0e0;
+  color: #999;
+  font-size: 14px;
+}
+
+.bestSellerBadge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #ff6b6b;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.productInfo {
+  padding: 15px;
+}
+
+.productName {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.productCategory {
+  margin: 5px 0;
+  color: #666;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.productDescription {
+  margin: 8px 0;
+  color: #888;
+  font-size: 13px;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.productFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+}
+
+.productPrice {
+  font-size: 18px;
+  font-weight: bold;
+  color: #28a745;
+}
+
+.deleteBtn {
+  padding: 6px 12px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.deleteBtn:hover {
+  background-color: #c82333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .productsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+  }
+
+  .productsHeader {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .productsHeader h2 {
+    font-size: 20px;
+  }
+
+  .productImageContainer {
+    height: 150px;
+  }
+
+  .productName {
+    font-size: 14px;
+  }
+
+  .productPrice {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .allProductsContainer {
+    padding: 10px;
+  }
+
+  .productsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+  }
+
+  .productCard {
+    border-radius: 5px;
+  }
+
+  .productImageContainer {
+    height: 120px;
+  }
+
+  .productInfo {
+    padding: 10px;
+  }
+
+  .productName {
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+
+  .productDescription {
+    font-size: 11px;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+  }
+
+  .productFooter {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .deleteBtn {
+    width: 100%;
+    padding: 8px;
+  }
+}

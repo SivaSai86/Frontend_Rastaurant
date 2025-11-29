@@ -5,9 +5,15 @@ const Login = (props) => {
   const { showWelcomeHandler } = props;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [err, setErr] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handlerSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
+    setErr("");
+    setSuccessMessage("");
     try {
       const response = await fetch(`${API_Path}vendor/login`, {
         method: "POST",
@@ -20,15 +26,19 @@ const Login = (props) => {
       const data = await response.json();
       if (response.ok) {
         console.log(data);
-        alert("vendor Login successful");
+        setSuccessMessage("Login successful! Redirecting...");
         localStorage.setItem("vendorToken", data.token);
         setEmail("");
         setPassword("");
-        showWelcomeHandler();
+        setTimeout(() => showWelcomeHandler(), 1500);
+      } else {
+        setErr(data.message || "Login failed");
       }
     } catch (error) {
       console.error("login failed: ", error);
-      alert("vendor Login failed");
+      setErr("Login failed. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
   return (
@@ -55,8 +65,14 @@ const Login = (props) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+        {err && <div className="errorMessage">{err}</div>}
+        {successMessage && (
+          <div className="successMessage">{successMessage}</div>
+        )}
         <div className="btnsubmit">
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={loading}>
+            {loading ? "Logging in..." : "Submit"}
+          </button>
         </div>
       </form>
     </div>

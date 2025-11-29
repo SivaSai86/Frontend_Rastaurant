@@ -9,7 +9,7 @@
 }
 
 .addFirmCard {
-  width: 100%;  
+  width: 100%;
   max-width: 420px;
   background: white;
   padding: 28px 25px;
@@ -94,6 +94,101 @@
   transition: 0.2s;
 }
 
-.submitBtn:hover {
+.submitBtn:hover:not(:disabled) {
   background: #1e40af;
+}
+
+.submitBtn:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.successMessage {
+  padding: 12px;
+  margin-bottom: 16px;
+  background: #d1fae5;
+  color: #065f46;
+  border-radius: 8px;
+  border: 1px solid #a7f3d0;
+  font-size: 14px;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Tablet Responsive (768px and below) */
+@media (max-width: 768px) {
+  .addFirmPage {
+    padding: 20px;
+  }
+
+  .addFirmCard {
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .formField input {
+    font-size: 13px;
+    padding: 9px 10px;
+  }
+
+  .gridOptions {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 12px;
+  }
+}
+
+/* Mobile Responsive (480px and below) */
+@media (max-width: 480px) {
+  .addFirmPage {
+    padding: 15px;
+  }
+
+  .addFirmCard {
+    padding: 15px;
+  }
+
+  .title {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .formField {
+    margin-bottom: 12px;
+  }
+
+  .formField label {
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+
+  .formField input {
+    font-size: 12px;
+    padding: 8px 9px;
+  }
+
+  .gridOptions {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .checkboxItem {
+    font-size: 13px;
+  }
+
+  .submitBtn {
+    padding: 10px;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+
+  .successMessage {
+    font-size: 12px;
+    padding: 10px;
+    margin-bottom: 12px;
+  }
 }

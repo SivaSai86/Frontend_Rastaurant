@@ -2,13 +2,7 @@ import React from "react";
 import "./styles/navBar.css";
 
 const NavBar = (props) => {
-  const {
-    showLoginHandler,
-    showRegisterHandler,
-    showAddFirmHandler,
-    showAddProductHandler,
-  } = props;
-  console.log(showLoginHandler);
+  const { showLoginHandler, showRegisterHandler } = props;
 
   return (
     <div className="navSection">

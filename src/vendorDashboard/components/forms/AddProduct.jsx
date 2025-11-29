@@ -9,6 +9,8 @@ const AddProduct = ({ firmId }) => {
   const [image, setImage] = useState(null);
   const [bestSeller, setBestSeller] = useState("");
   const [description, setDescription] = useState("");
+  const [submitLoading, setSubmitLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleCategoryChange = (event) => {
     const value = event.target.value;
@@ -25,20 +27,25 @@ const AddProduct = ({ firmId }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitLoading(true);
+    setSuccessMessage("");
     try {
       const vendorToken = localStorage.getItem("vendorToken");
       if (!vendorToken) {
         alert("Login again! Token missing.");
+        setSubmitLoading(false);
         return;
       }
 
       if (!image) {
         alert("Please upload image");
+        setSubmitLoading(false);
         return;
       }
 
       if (!firmId) {
         alert("Firm ID is missing");
+        setSubmitLoading(false);
         return;
       }
 
@@ -61,7 +68,7 @@ const AddProduct = ({ firmId }) => {
       const responseData = await response.json();
 
       if (response.ok) {
-        alert("Product Added Successfully!");
+        setSuccessMessage("Product Added Successfully!");
         console.log("data: ", responseData);
         setProductName("");
         setPrice("");
@@ -69,6 +76,7 @@ const AddProduct = ({ firmId }) => {
         setImage(null);
         setBestSeller("");
         setDescription("");
+        setTimeout(() => setSuccessMessage(""), 3000);
       } else {
         alert("Product Add Failed: " + JSON.stringify(responseData));
         console.error("Server Error:", responseData);
@@ -76,6 +84,8 @@ const AddProduct = ({ firmId }) => {
     } catch (error) {
       alert("Product Add failed");
       console.error("Error adding product:", error);
+    } finally {
+      setSubmitLoading(false);
     }
   };
 
@@ -170,8 +180,14 @@ const AddProduct = ({ firmId }) => {
           />
         </div>
 
+        {successMessage && (
+          <div className="successMessage">{successMessage}</div>
+        )}
+
         <div className="btnsubmit">
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={submitLoading}>
+            {submitLoading ? "Submitting..." : "Submit"}
+          </button>
         </div>
       </form>
     </div>

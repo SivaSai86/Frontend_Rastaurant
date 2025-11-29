@@ -11,9 +11,13 @@ const Register = (props) => {
   const [password, setPassword] = useState("");
   const [err, setErr] = useState("");
   const [loading, setLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
+    setErr("");
+    setSuccessMessage("");
     try {
       const response = await fetch(`${API_Path}vendor/register`, {
         method: "POST",
@@ -26,15 +30,19 @@ const Register = (props) => {
       const data = await response.json();
       if (response.ok) {
         console.log(data);
-        alert("vendor Register successful");
+        setSuccessMessage("Registration successful! Redirecting to login...");
         setEmail("");
         setPassword("");
         setUsername("");
-        showLoginHandler();
+        setTimeout(() => showLoginHandler(), 1500);
+      } else {
+        setErr(data.message || "Registration failed");
       }
     } catch (error) {
       console.error("registration failed: ", error);
-      alert("vendor Register failed");
+      setErr("Registration failed. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -77,8 +85,15 @@ const Register = (props) => {
           />
         </div>
 
+        {err && <div className="errorMessage">{err}</div>}
+        {successMessage && (
+          <div className="successMessage">{successMessage}</div>
+        )}
+
         <div className="btnsubmit">
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={loading}>
+            {loading ? "Registering..." : "Submit"}
+          </button>
         </div>
       </form>
     </div>
