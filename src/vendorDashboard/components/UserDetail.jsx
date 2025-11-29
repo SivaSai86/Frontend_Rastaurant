@@ -28,34 +28,47 @@ const UserDetail = () => {
       const decoded = jwtDecode(vendorToken);
       const vendorId = decoded.userId;
 
-      const response = await fetch(`${API_Path}vendor/${vendorId}`, {
+      // Fetch all vendors and find current vendor
+      const response = await fetch(`${API_Path}vendor/all-vendors/`, {
         method: "GET",
         headers: {
+          "Content-Type": "application/json",
           token: vendorToken,
         },
       });
 
       if (response.ok) {
-        const data = await response.json();
-        console.log("User details:", data);
+        const result = await response.json();
+        const vendorData = result.data || result;
 
-        if (data.data && data.data.length > 0) {
-          const userData = data.data[0];
+        // Find current vendor in the list
+        const currentVendor = Array.isArray(vendorData)
+          ? vendorData.find(
+              (v) => v.id === vendorId || v.vendor_id === vendorId
+            )
+          : null;
+
+        if (currentVendor) {
+          console.log("User details:", currentVendor);
           setUserDetails({
-            id: userData.id,
-            username: userData.username,
-            email: userData.email,
+            id: currentVendor.id || currentVendor.vendor_id,
+            username: currentVendor.username,
+            email: currentVendor.email,
           });
 
-          // Find firm details from the response
-          const firmData = data.data.find((item) => item.firmName !== null);
-          if (firmData) {
-            setFirmDetails(firmData);
-          }
+          setFirmDetails({
+            firmName: currentVendor.firmName,
+            area: currentVendor.area,
+            region: currentVendor.region,
+            category: currentVendor.category,
+            offer: currentVendor.offer,
+            image: currentVendor.image,
+          });
+        } else {
+          setError("Vendor information not found");
         }
       } else {
-        const errorData = await response.json();
-        setError(errorData.message || "Failed to fetch user details");
+        setError("Failed to fetch user details");
       }
     } catch (error) {
       console.error("Error fetching user details:", error);

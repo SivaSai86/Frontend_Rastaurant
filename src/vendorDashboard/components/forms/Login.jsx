@@ -63,6 +63,7 @@ const Login = (props) => {
             placeholder="Enter Your Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            autoComplete="current-password"
           />
         </div>
         {err && <div className="errorMessage">{err}</div>}

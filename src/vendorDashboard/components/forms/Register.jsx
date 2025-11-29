@@ -82,6 +82,7 @@ const Register = (props) => {
             placeholder="Enter Your Password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
+            autoComplete="new-password"
           />
         </div>
 
